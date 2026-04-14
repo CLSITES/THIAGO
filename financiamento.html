@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Promoção CPF Aprovado - Revemar</title>
+<title>FÁCIL DE APROVAR - Revemar</title>
+
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
     /* --- CONFIGURAÇÕES GERAIS --- */
     :root {
-        --honda-blue: #0044cc;
-        --honda-dark: #00102a;
-        --gold: #ffcc00;
-        --whatsapp-green: #25d366;
-    }
+    --honda-blue: #ffb000; /* agora vira amarelo principal */
+    --honda-dark: #3b2a00; /* fundo mais quente (amarelo escuro) */
+    --gold: #ffd700; /* dourado forte */
+    --red: #ff1a1a; /* vermelho destaque */
+    --whatsapp-green: #25d366;
+}
 
     body {
         margin: 0;
@@ -40,7 +42,7 @@
     .logo-cpf {
         display: block;
         margin: 0 auto 20px auto;
-        width: clamp(100px, 30vw, 150px);
+        width: clamp(200px, 30vw, 150px);
         filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
         animation: pulseLogo 3s infinite alternate;
     }
@@ -72,7 +74,9 @@
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 6px;
-        background: linear-gradient(90deg, var(--gold), #ffaa00, var(--honda-blue));
+        .card::after {
+    background: linear-gradient(90deg, #ffd700, #ffb000, #ff1a1a);
+}
         border-radius: 20px 20px 0 0;
     }
 
@@ -81,19 +85,19 @@
         font-size: clamp(1.2rem, 5vw, 1.6rem);
         text-align: center;
         text-transform: uppercase;
-        background: linear-gradient(45deg, #002266, var(--honda-blue));
+        background: linear-gradient(45deg, #ff1a1a, #ffb000);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 800;
     }
 
-    .moto-name {
+    .moto-name {a
         font-weight: 800;
         font-size: clamp(1rem, 4vw, 1.3rem);
         margin-bottom: 25px;
         color: white;
         text-align: center;
-        background: linear-gradient(90deg, #003399, #005ce6);
+        background: linear-gradient(90deg, #ff1a1a, #ff6a00);
         padding: 12px 20px;
         border-radius: 50px;
         box-shadow: 0 4px 15px rgba(0, 85, 255, 0.3);
@@ -204,7 +208,7 @@
 <body>
 
 <div class="main-wrapper">
-    <img src="https://image2url.com/r2/default/images/1772572693263-8f07cbb3-a571-44e4-8412-081a82ed80d9.blob" alt="Logo" class="logo-cpf">
+    <img src="https://www.image2url.com/r2/default/images/1776183373218-60bf6edc-ef12-48d9-8701-49a41878912c.blob" alt="Logo" class="logo-cpf">
 
     <div class="card">
         <h2 id="tituloMoto">Carregando...</h2>
