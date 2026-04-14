@@ -10,11 +10,12 @@
 <style>
     /* --- CONFIGURAÇÕES GERAIS (ESTILO IGUAL AO PRIMEIRO) --- */
     :root {
-        --honda-blue: #0044cc;
-        --honda-dark: #00102a;
-        --gold: #ffcc00;
-        --whatsapp-green: #25d366;
-    }
+    --honda-blue: #ffb000; /* amarelo principal */
+    --honda-dark: #3b2a00; /* fundo escuro quente */
+    --gold: #ffd700; /* dourado */
+    --red: #ff1a1a; /* vermelho destaque */
+    --whatsapp-green: #25d366;
+}
 
     body {
         margin: 0;
@@ -60,7 +61,7 @@
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 6px;
-        background: linear-gradient(90deg, var(--gold), #ffaa00, var(--honda-blue));
+        background: linear-gradient(90deg, #ffd700, #ffb000, #ff1a1a);
         border-radius: 20px 20px 0 0;
     }
 
@@ -69,7 +70,7 @@
         font-size: clamp(1.2rem, 5vw, 1.6rem);
         text-align: center;
         text-transform: uppercase;
-        background: linear-gradient(45deg, #002266, var(--honda-blue));
+        background: linear-gradient(45deg, #ff1a1a, #ffb000);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 800;
@@ -81,7 +82,7 @@
         margin-bottom: 25px;
         color: white;
         text-align: center;
-        background: linear-gradient(90deg, #003399, #005ce6);
+        background: linear-gradient(90deg, #ff1a1a, #ff6a00);
         padding: 12px 20px;
         border-radius: 50px;
         box-shadow: 0 4px 15px rgba(0, 85, 255, 0.3);
@@ -111,9 +112,9 @@
     }
 
     /* Bordas laterais coloridas para ficar igual ao outro */
-    input[name="nome"] { border-left: 5px solid var(--honda-blue); }
-    input[name="cpf"] { border-left: 5px solid var(--gold); }
-    select[name="plano"] { border-left: 5px solid var(--honda-blue); }
+   input[name="nome"] { border-left: 5px solid #ff1a1a; }
+input[name="cpf"] { border-left: 5px solid #ffd700; }
+select[name="plano"] { border-left: 5px solid #ffb000; }
     input[name="parcelaIdeal"] { border-left: 5px solid var(--whatsapp-green); }
 
     button {
@@ -170,7 +171,7 @@
 <body>
 
 <div class="main-wrapper">
-    <img src="https://image2url.com/r2/default/images/1772572693263-8f07cbb3-a571-44e4-8412-081a82ed80d9.blob" alt="Logo" class="logo-top">
+    <img src="https://www.image2url.com/r2/default/images/1776183373218-60bf6edc-ef12-48d9-8701-49a41878912c.blob" alt="Logo" class="logo-top">
 
     <div class="card">
         <h2 id="tituloMoto">Carregando Modelo...</h2>
@@ -199,9 +200,6 @@
                 <option>Sim, tenho pressa</option>
                 <option>Não, posso aguardar</option>
             </select>
-
-            <label>Valor de parcela ideal (R$) *</label>
-            <input type="number" name="parcelaIdeal" placeholder="Ex: 450" required>
 
             <input type="hidden" name="moto" id="motoInput">
             <button type="submit">📲 Enviar para WhatsApp</button>
@@ -494,15 +492,25 @@ track.innerHTML = [...moto.imgs, ...moto.imgs].map(img => `<img src="${img}">`).
 const planoSelect = document.getElementById('planoSelect');
 Object.entries(moto.parcelas).forEach(([p,v])=>{
     const opt=document.createElement('option');
-    opt.value=p;
-    opt.textContent=`${p}x de R$ ${v.toFixed(2)}`;
+    opt.value = `${p}|${v.toFixed(2)}`;
+opt.textContent = `${p}x de R$ ${v.toFixed(2)}`;
     planoSelect.appendChild(opt);
 });
 
 document.getElementById('consForm').addEventListener('submit', e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target));
-    const msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*\n\n*Moto:* ${d.moto}\n*Nome:* ${d.nome}\n*CPF:* ${d.cpf}\n*Plano:* ${d.plano}x\n*Parcela Ideal:* R$ ${d.parcelaIdeal}\n*Tem pressa:* ${d.pressa}`;
+
+    const [meses, valor] = d.plano.split("|");
+
+    const msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*
+
+*Moto:* ${d.moto}
+*Nome:* ${d.nome}
+*CPF:* ${d.cpf}
+*Plano escolhido:* ${meses}x de R$ ${valor}
+*Tem pressa:* ${d.pressa}`;
+
     location.href = `https://wa.me/5594991458929?text=${encodeURIComponent(msg)}`;
 });
 </script>
