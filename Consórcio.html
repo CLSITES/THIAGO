@@ -8,35 +8,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-    /* --- CONFIGURAÇÕES GERAIS (ESTILO IGUAL AO PRIMEIRO) --- */
-    :root {
-    --honda-blue: #ffb000; /* amarelo principal */
-    --honda-dark: #3b2a00; /* fundo escuro quente */
-    --gold: #ffd700; /* dourado */
-    --red: #ff1a1a; /* vermelho destaque */
-    --whatsapp-green: #25d366;
+:root {
+    --verde: #009C3B;
+    --verde-escuro: #006B2A;
+    --amarelo: #00205f;
+    --azul: #002b15;
+    --azul-claro: #3E8EDE;
+    --branco: #ffffff;
 }
 
-    body {
-        margin: 0;
-        font-family: 'Montserrat', sans-serif;
-        background: linear-gradient(135deg, var(--honda-dark) 0%, var(--honda-blue) 100%);
-        min-height: 100vh;
-        padding: 20px;
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+/* FUNDO */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--azul) 1%);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
 
+ /* --- CONTAINER PRINCIPAL (LIMITADOR PC) --- */
     .main-wrapper {
         width: 100%;
-        max-width: 600px;
+        max-width: 600px; /* Largura ideal para desktop */
         position: relative;
         z-index: 1;
     }
-
-    /* --- LOGO --- */
+   /* --- LOGO --- */
     .logo-top {
         display: block;
         margin: 0 auto 20px auto;
@@ -89,89 +88,92 @@
         text-transform: uppercase;
     }
 
-    /* --- FORMULÁRIO --- */
-    label {
-        font-weight: 700;
-        margin-top: 15px;
-        display: block;
-        font-size: 13px;
-        color: #002266;
-        text-transform: uppercase;
-    }
+/* LINHA TOPO COLORIDA */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, var(--verde), var(--amarelo), var(--azul));
+    border-radius: 20px 20px 0 0;
+}
 
-    input, select {
-        width: 100%;
-        padding: 14px;
-        border-radius: 12px;
-        border: 2px solid #e0e6ed;
-        margin-top: 6px;
-        font-size: 16px;
-        background: #f8fafc;
-        font-family: 'Montserrat', sans-serif;
-        box-sizing: border-box;
-    }
+/* TITULOS */
+h2 {
+    text-align: center;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--verde), var(--azul));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    /* Bordas laterais coloridas para ficar igual ao outro */
-   input[name="nome"] { border-left: 5px solid #ff1a1a; }
-input[name="cpf"] { border-left: 5px solid #ffd700; }
-select[name="plano"] { border-left: 5px solid #ffb000; }
-    input[name="parcelaIdeal"] { border-left: 5px solid var(--whatsapp-green); }
+/* NOME DA MOTO */
+.moto-name {
+    background: linear-gradient(90deg, var(--verde), var(--amarelo));
+    color: #000;
+    padding: 12px;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 800;
+}
 
-    button {
-        width: 100%;
-        padding: 18px;
-        background: linear-gradient(45deg, #128c7e, var(--whatsapp-green), #128c7e);
-        background-size: 200% auto;
-        border: none;
-        margin-top: 25px;
-        border-radius: 50px;
-        font-size: 16px;
-        font-weight: 800;
-        color: white;
-        cursor: pointer;
-        text-transform: uppercase;
-        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-        animation: gradientMove 3s infinite alternate;
-    }
+/* INPUTS */
+input, select {
+    width: 95%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    margin-top: 5px;
+}
 
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        100% { background-position: 100% 50%; }
-    }
-
-    /* --- CARROSSEL --- */
+/* BOTÃO */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(45deg, var(--verde), var(--amarelo));
+    font-weight: 800;
+    cursor: pointer;
+}
+/* --- CARROSSEL --- */
     .carousel {
         width: 100%;
-        height: 240px;
+        height: clamp(180px, 40vh, 260px);
         overflow: hidden;
         border-radius: 16px;
+        margin-bottom: 10px;
         background: white;
     }
 
     .carousel-track {
         display: flex;
         width: max-content;
-        animation: scroll 25s linear infinite;
+        animation: scroll 18s linear infinite;
     }
 
     .carousel-track img {
-        height: 240px;
+        height: clamp(180px, 40vh, 260px);
         width: auto;
-        min-width: 300px;
+        min-width: 280px;
         object-fit: contain;
         padding: 10px;
+        transition: 0.3s;
     }
 
-    @keyframes scroll {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 </style>
 </head>
 <body>
 
 <div class="main-wrapper">
-    <img src="https://www.image2url.com/r2/default/images/1776183373218-60bf6edc-ef12-48d9-8701-49a41878912c.blob" alt="Logo" class="logo-top">
+    <img src="https://www.image2url.com/r2/default/images/1780318605532-0c5e2b58-86c8-401e-b9b4-eb590e2bca65.png" alt="Logo" class="logo-top">
 
     <div class="card">
         <h2 id="tituloMoto">Carregando Modelo...</h2>
@@ -189,17 +191,25 @@ select[name="plano"] { border-left: 5px solid #ffb000; }
             <input name="nome" placeholder="Digite seu nome completo" required>
 
             <label>CPF *</label>
-            <input name="cpf" placeholder="000.000.000-00" required>
-
-            <label>Plano de parcelas *</label>
-            <select name="plano" id="planoSelect" required></select>
+            <input name="cpf" id="cpfInput" placeholder="000.000.000-00" maxlength="14" required>
+<small id="cpfErro" style="color:red; display:none;">CPF inválido</small>
 
             <label>Tem pressa para contemplar? *</label>
-            <select name="pressa" required>
-                <option value="">Selecione uma opção</option>
-                <option>Sim, tenho pressa</option>
-                <option>Não, posso aguardar</option>
-            </select>
+<select name="pressa" id="pressaSelect" required>
+    <option value="">Selecione uma opção</option>
+    <option value="sim">Sim, tenho pressa</option>
+    <option value="nao">Não, posso aguardar</option>
+</select>
+
+<div id="parcelaIdealBox" style="display:none; margin-top:15px;">
+    <label>Qual valor de parcela seria ideal para você pagar por mês?</label>
+    <input type="number" name="parcelaIdeal" placeholder="Ex: 500">
+</div>
+
+<div id="planoBox">
+    <label>Plano de parcelas *</label>
+    <select name="plano" id="planoSelect" required></select>
+</div>
 
             <input type="hidden" name="moto" id="motoInput">
             <button type="submit">📲 Enviar para WhatsApp</button>
@@ -213,9 +223,9 @@ const motos = [
   id:'BIZ125ES',
   nome:'BIZ 125 ES',
   imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2024-08/nova-carenagem-honda-biz-125-es_1560x624.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2024-08/novo-grafismo-honda-biz-125-es_1560x624.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2024-08/novo-painel-honda-biz-125-es_1560x624_fundo%20branco.webp'
+    'https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20ES%20-%20Branco%20%28%20Ross%20White%20%29%20HERO%20%281%29.webp',
+    'https://www.honda.com.br/motos/sites/hda/files/2026-05/BIZ_Galeria_9.webp',
+  
   ],
   parcelas:{36:566.13,48:429.72,60:348.88,80:269.36}
 },
@@ -224,9 +234,8 @@ const motos = [
   id:'BIZ125EX',
   nome:'BIZ 125 EX',
   imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2024-08/nova-carenagem-honda-biz-125-ex_1560x624.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2024-08/Biz_125_Diferencial_Freios_nas_duas_maos.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2024-08/luz-de-poscionamento-led-honda-biz-125-ex_2_1560x624.jpg'
+    'https://www.honda.com.br/motos/sites/hda/files/2026-05/tips_card_1_0.webp',
+    'https://www.honda.com.br/motos/sites/hda/files/2026-05/BIZ_Galeria_1.webp'
   ],
   parcelas:{36:700.66,48:531.84,60:431.78,80:333.37}
 },
@@ -399,9 +408,9 @@ const motos = [
   id:'POP110',
   nome:'POP 110i ES +10',
   imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2024-04/Farol-Pop110iES_0.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2024-04/MODULO~1_0.jpg',
-    'https://www.honda.com.br/motos/sites/hda/files/2024-04/design-detalhes-laterais-da-pop-110i-es_0.webp'
+    'https://www.honda.com.br/motos/sites/hda/files/2026-04/Lateral.webp',
+    'https://www.honda.com.br/motos/sites/hda/files/2026-04/Design%20-%20Pop%20Azul%20TD%20CROP%201-1.webp',
+    'https://www.honda.com.br/motos/sites/hda/files/2026-04/Seguranc%CC%A7a%20-%20HONDA_POP_20268342.webp'
   ],
   parcelas:{36:457.12,48:346.98,60:281.70,80:217.49}
 },
@@ -490,6 +499,28 @@ const track = document.getElementById('carouselTrack');
 track.innerHTML = [...moto.imgs, ...moto.imgs].map(img => `<img src="${img}">`).join('');
 
 const planoSelect = document.getElementById('planoSelect');
+
+  
+  const pressaSelect = document.getElementById("pressaSelect");
+const parcelaIdealBox = document.getElementById("parcelaIdealBox");
+const planoBox = document.getElementById("planoBox");
+
+pressaSelect.addEventListener("change", function(){
+
+    if(this.value === "sim"){
+
+        parcelaIdealBox.style.display = "block";
+        planoBox.style.display = "none";
+
+    }else{
+
+        parcelaIdealBox.style.display = "none";
+        planoBox.style.display = "block";
+
+    }
+
+});
+  
 Object.entries(moto.parcelas).forEach(([p,v])=>{
     const opt=document.createElement('option');
     opt.value = `${p}|${v.toFixed(2)}`;
@@ -499,20 +530,89 @@ opt.textContent = `${p}x de R$ ${v.toFixed(2)}`;
 
 document.getElementById('consForm').addEventListener('submit', e => {
     e.preventDefault();
+  
     const d = Object.fromEntries(new FormData(e.target));
 
-    const [meses, valor] = d.plano.split("|");
-
-    const msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*
+    let msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*
 
 *Moto:* ${d.moto}
 *Nome:* ${d.nome}
 *CPF:* ${d.cpf}
+*Tem pressa:* ${d.pressa}
+`;
+
+if(d.pressa === "sim"){
+
+    msg += `
+*Parcela ideal:* R$ ${d.parcelaIdeal}
+`;
+
+}else{
+
+    const [meses, valor] = d.plano.split("|");
+
+    msg += `
 *Plano escolhido:* ${meses}x de R$ ${valor}
-*Tem pressa:* ${d.pressa}`;
+`;
+
+}
 
     location.href = `https://wa.me/5594991458929?text=${encodeURIComponent(msg)}`;
 });
+
+  const cpfInput = document.getElementById("cpfInput");
+const cpfErro = document.getElementById("cpfErro");
+
+// FORMATA + VALIDA
+cpfInput.addEventListener("input", function(e){
+    let v = e.target.value.replace(/\D/g,"");
+
+    if(v.length > 3) v = v.replace(/(\d{3})(\d)/,"$1.$2");
+    if(v.length > 7) v = v.replace(/(\d{3})\.(\d{3})(\d)/,"$1.$2.$3");
+    if(v.length > 11) v = v.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/,"$1.$2.$3-$4");
+
+    e.target.value = v;
+
+    const cpfLimpo = v.replace(/\D/g, "");
+
+    if (cpfLimpo.length === 11) {
+        if (!validarCPF(cpfLimpo)) {
+            cpfErro.style.display = "block";
+            cpfInput.style.borderColor = "red";
+        } else {
+            cpfErro.style.display = "none";
+            cpfInput.style.borderColor = "green";
+        }
+    } else {
+        cpfErro.style.display = "none";
+        cpfInput.style.borderColor = "#e0e6ed";
+    }
+});
+
+
+// FUNÇÃO VALIDAR CPF
+function validarCPF(cpf) {
+    if (cpf.length != 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+    let soma = 0, resto;
+
+    for (let i = 1; i <= 9; i++)
+        soma += parseInt(cpf.substring(i-1, i)) * (11 - i);
+
+    resto = (soma * 10) % 11;
+    if (resto >= 10) resto = 0;
+    if (resto != parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++)
+        soma += parseInt(cpf.substring(i-1, i)) * (12 - i);
+
+    resto = (soma * 10) % 11;
+    if (resto >= 10) resto = 0;
+    if (resto != parseInt(cpf.substring(10, 11))) return false;
+
+    return true;
+}
 </script>
 
 </body>
